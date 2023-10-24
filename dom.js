@@ -13,3 +13,24 @@ const decoderDetectorOutput = document.querySelector(
 );
 const decoderOutput = document.querySelector("#decoder-text-output");
 const decodeButton = document.querySelector("#decode-button");
+
+//ALGORITHM SELECT DYNAMIC INPUTS
+encoderAlgorithmSelect.addEventListener("change", () => {
+  if (encoderAlgorithmSelect.value == "caesar-algorithm") {
+    document.querySelector("#vigenere-config").style.display = "none";
+    document.querySelector("#substitution-config").style.display = "none";
+    document.querySelector("#caesar-config").style.display = "block";
+  } else if (encoderAlgorithmSelect.value == "vigenere-algorithm") {
+    document.querySelector("#substitution-config").style.display = "none";
+    document.querySelector("#caesar-config").style.display = "none";
+    document.querySelector("#vigenere-config").style.display = "block";
+  } else if (encoderAlgorithmSelect.value == "substitution-algorithm") {
+    document.querySelector("#vigenere-config").style.display = "none";
+    document.querySelector("#caesar-config").style.display = "none";
+    document.querySelector("#substitution-config").style.display = "block";
+  } else {
+    document.querySelector("#vigenere-config").style.display = "none";
+    document.querySelector("#caesar-config").style.display = "none";
+    document.querySelector("#substitution-config").style.display = "none";
+  }
+});
