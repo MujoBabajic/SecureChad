@@ -4,8 +4,122 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>SecureChad</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="icon" href="pictures/icon-logo.png" />
   </head>
+
   <body>
-    <h1>SecureChad Encryption</h1>
+    <header>
+      <img src="pictures/header-logo.png" alt="header-logo" />
+    </header>
+
+    <div id="main-container">
+      <h2>Encoder</h2>
+      <br />
+      <!-- ENCODER ELEMENTS -->
+      <div id="encoder-container">
+        <div id="encoder-text-container" class="io-containers">
+          <div class="io-header">Input</div>
+          <div class="io-body">
+            <textarea id="encoder-text-input"></textarea>
+          </div>
+        </div>
+
+        <div id="encoder-algorithm-selector-container" class="io-containers">
+          <div class="io-header">Algorithm Select</div>
+          <div class="io-body">
+            <select id="algorithm-select">
+              <option value="caesar-algorithm">Caesar Cipher</option>
+              <option value="vigenere-algorithm">Vigenere Cipher</option>
+              <option value="rot13-algorithm">ROT13</option>
+              <option value="atbash-algorithm">Atbash Cipher</option>
+              <option value="substitution-algorithm">
+                Simple Substitution Cipher
+              </option>
+            </select>
+            <div id="caesar-config" style="display: none">
+              <br />
+              <br />
+              <label for="caesar-shift-input">Shift number:</label>
+              <input type="number" id="caesar-shift-input" />
+            </div>
+
+            <div id="vigenere-config" style="display: none">
+              <br />
+              <br />
+              <label for="vigenere-keyword-input">Keyword:</label>
+              <input type="text" id="vigenere-keyword-input" />
+            </div>
+
+            <div id="substitution-config" style="display: none">
+              <br />
+              <p>Alphabet - abcdefghijklmnopqrstuvwxyz</p>
+              <br />
+              <label for="substitution-input">Substitute:</label>
+              <input type="text" id="substitution-input" />
+            </div>
+          </div>
+        </div>
+
+        <div id="encoder-output-container" class="io-containers">
+          <div class="io-header">Output</div>
+          <div class="io-body">
+            <textarea id="encoder-text-output"></textarea>
+          </div>
+        </div>
+      </div>
+
+      <div class="submit-container">
+        <button id="encode-button" class="submit-button">Encode</button>
+      </div>
+
+      <hr />
+      <br />
+
+      <h2>Decoder</h2>
+      <br />
+      <!-- DECODER ELEMENTS -->
+      <div id="decoder-container">
+        <div id="decoder-text-container" class="io-containers">
+          <div class="io-header">Input</div>
+          <div class="io-body">
+            <textarea id="decoder-text-input"></textarea>
+          </div>
+        </div>
+
+        <div id="decoder-algorithm-detector-container" class="io-containers">
+          <div class="io-header">Algorithm Detector</div>
+          <div class="io-body">
+            <textarea id="decoder-detector-output"></textarea>
+          </div>
+        </div>
+
+        <div id="encoder-output-container" class="io-containers">
+          <div class="io-header">Output</div>
+          <div class="io-body">
+            <textarea id="decoder-text-output"></textarea>
+          </div>
+        </div>
+      </div>
+
+      <div class="submit-container">
+        <button id="decode-button" class="submit-button">Decode</button>
+      </div>
+    </div>
+
+    <footer>
+      <p>
+        Produced by
+        <a href="https://github.com/MujoBabajic" target="_blank"
+          >Mujo Babajic</a
+        >
+        and
+        <a href="https://github.com/becirovic76" target="_blank"
+          >Adem Becirovic</a
+        >
+      </p>
+    </footer>
+
+    <script src="dom.js"></script>
   </body>
 </html>
