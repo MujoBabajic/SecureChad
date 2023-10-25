@@ -3,6 +3,7 @@ const encoderInput = document.querySelector("#encoder-text-input");
 const encoderAlgorithmSelect = document.querySelector("#algorithm-select");
 const caesarShiftInput = document.querySelector("#caesar-shift-input");
 const vigenereKeywordInput = document.querySelector("#vigenere-keyword-input");
+const substitutionInput = document.querySelector("#substitution-input");
 const encoderOutput = document.querySelector("#encoder-text-output");
 const encodeButton = document.querySelector("#encode-button");
 
