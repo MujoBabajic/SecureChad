@@ -40,12 +40,12 @@ function vigenereCipherAlgorithm(text, keyword) {
       if (char === char.toUpperCase()) {
         char = String.fromCharCode(
           ((char.charCodeAt(0) - "A".charCodeAt(0) + shift) % 26) +
-            "A".charCodeAt(0)
+          "A".charCodeAt(0)
         );
       } else {
         char = String.fromCharCode(
           ((char.charCodeAt(0) - "a".charCodeAt(0) + shift) % 26) +
-            "a".charCodeAt(0)
+          "a".charCodeAt(0)
         );
       }
 
@@ -55,5 +55,44 @@ function vigenereCipherAlgorithm(text, keyword) {
     encryptedText += char;
   }
 
+  return encryptedText;
+}
+
+
+function ROT13Cipher(text) {
+  return caesarCipherAlgorithm(text, 13);
+}
+
+function atbashCipher(text) {
+  let encryptedText = '';
+  let alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
+  for (let i = 0; i < text.length; i++) {
+    let char = text[i].toLowerCase();
+    if (alphabet.includes(char)) {
+      let index = alphabet.indexOf(char);
+      let reversedIndex = alphabet.length - 1 - index;
+      encryptedText += alphabet[reversedIndex];
+    } else {
+      encryptedText += char;
+    }
+  }
+
+  return encryptedText;
+}
+
+function simpleSubstitutionCipher(text, table) {
+  let alphabet = 'abcdefghijklmnopqrstuvwxyz';
+  let encryptedText = '';
+  
+  for (let i = 0; i < text.length; i++) {
+    let char = text[i].toLowerCase();
+    if (alphabet.includes(char)) {
+      let index = alphabet.indexOf(char);
+      encryptedText += table[index];
+    } else {
+      encryptedText += char;
+    }
+  }
+  
   return encryptedText;
 }
