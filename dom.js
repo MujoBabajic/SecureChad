@@ -19,7 +19,7 @@ const decodeButton = document.querySelector("#decode-button");
 
 // SETTING TEXTAREAS TO BE READ-ONLY
 encoderOutput.setAttribute('readonly', true);
-decoderDetectorOutput.setAttribute('readonly', true);
+decoderOutput.setAttribute('readonly', true);
 
 
 //ALGORITHM SELECT DYNAMIC INPUTS
