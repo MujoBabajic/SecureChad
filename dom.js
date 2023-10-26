@@ -7,6 +7,7 @@ const encoderOutput = document.querySelector("#encoder-text-output");
 const encodeButton = document.querySelector("#encode-button");
 const substitutionInput = document.querySelector('#substitution-input')
 
+
 //DECODER REFERENCES
 const decoderInput = document.querySelector("#decoder-text-input");
 const decoderDetectorOutput = document.querySelector(
@@ -14,6 +15,12 @@ const decoderDetectorOutput = document.querySelector(
 );
 const decoderOutput = document.querySelector("#decoder-text-output");
 const decodeButton = document.querySelector("#decode-button");
+
+
+// SETTING TEXTAREAS TO BE READ-ONLY
+encoderOutput.setAttribute('readonly', true);
+decoderDetectorOutput.setAttribute('readonly', true);
+
 
 //ALGORITHM SELECT DYNAMIC INPUTS
 encoderAlgorithmSelect.addEventListener("change", () => {
@@ -37,22 +44,27 @@ encoderAlgorithmSelect.addEventListener("change", () => {
 });
 
 
+// ENCRYPTING TEXT AND DISPLAYING IT  
 encodeButton.addEventListener('click', () => {
-  if (encoderAlgorithmSelect.value == 'caesar-algorithm') {
-    encoderOutput.value = caesarCipherAlgorithm(encoderInput.value, caesarShiftInput.value);
-    console.log(caesarCipherAlgorithm(encoderInput.value, caesarShiftInput))
+  if (encoderAlgorithmSelect.value == '') {
+    alert('No text in the input');
   }
-  else if (encoderAlgorithmSelect.value == 'vigenere-algorithm') {
-    encoderOutput.value = vigenereCipherAlgorithm(encoderInput.value, vigenereKeywordInput.value)
-  }
-  else if (encoderAlgorithmSelect.value == 'rot13-algorithm') {
-    encoderOutput.value = ROT13Cipher(encoderInput.value);
-  }
-  else if (encoderAlgorithmSelect.value == 'atbash-algorithm') {
-    encoderOutput.value = atbashCipher(encoderInput.value);
-  }
-  else if (encoderAlgorithmSelect.value == 'substitution-algorithm') {
-    encoderOutput.value = simpleSubstitutionCipher(encoderInput.value, substitutionInput.value)
+  else {
+    if (encoderAlgorithmSelect.value == 'caesar-algorithm') {
+      encoderOutput.value = caesarCipherAlgorithm(encoderInput.value, caesarShiftInput.value);
+      console.log(caesarCipherAlgorithm(encoderInput.value, caesarShiftInput))
+    }
+    else if (encoderAlgorithmSelect.value == 'vigenere-algorithm') {
+      encoderOutput.value = vigenereCipherAlgorithm(encoderInput.value, vigenereKeywordInput.value)
+    }
+    else if (encoderAlgorithmSelect.value == 'rot13-algorithm') {
+      encoderOutput.value = ROT13Cipher(encoderInput.value);
+    }
+    else if (encoderAlgorithmSelect.value == 'atbash-algorithm') {
+      encoderOutput.value = atbashCipher(encoderInput.value);
+    }
+    else if (encoderAlgorithmSelect.value == 'substitution-algorithm') {
+      encoderOutput.value = simpleSubstitutionCipher(encoderInput.value, substitutionInput.value)
+    }
   }
 })
-
