@@ -6,6 +6,7 @@ const vigenereKeywordInput = document.querySelector("#vigenere-keyword-input");
 const substitutionInput = document.querySelector("#substitution-input");
 const encoderOutput = document.querySelector("#encoder-text-output");
 const encodeButton = document.querySelector("#encode-button");
+const substitutionInput = document.querySelector('#substitution-input')
 
 //DECODER REFERENCES
 const decoderInput = document.querySelector("#decoder-text-input");
@@ -35,3 +36,24 @@ encoderAlgorithmSelect.addEventListener("change", () => {
     document.querySelector("#substitution-config").style.display = "none";
   }
 });
+
+
+encodeButton.addEventListener('click', () => {
+  if (encoderAlgorithmSelect.value == 'caesar-algorithm') {
+    encoderOutput.value = caesarCipherAlgorithm(encoderInput.value, caesarShiftInput.value);
+    console.log(caesarCipherAlgorithm(encoderInput.value, caesarShiftInput))
+  }
+  else if (encoderAlgorithmSelect.value == 'vigenere-algorithm') {
+    encoderOutput.value = vigenereCipherAlgorithm(encoderInput.value, vigenereKeywordInput.value)
+  }
+  else if (encoderAlgorithmSelect.value == 'rot13-algorithm') {
+    encoderOutput.value = ROT13Cipher(encoderInput.value);
+  }
+  else if (encoderAlgorithmSelect.value == 'atbash-algorithm') {
+    encoderOutput.value = atbashCipher(encoderInput.value);
+  }
+  else if (encoderAlgorithmSelect.value == 'substitution-algorithm') {
+    encoderOutput.value = simpleSubstitutionCipher(encoderInput.value, substitutionInput.value)
+  }
+})
+

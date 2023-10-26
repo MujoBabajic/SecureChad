@@ -83,16 +83,25 @@ function atbashCipher(text) {
 function simpleSubstitutionCipher(text, table) {
   let alphabet = 'abcdefghijklmnopqrstuvwxyz';
   let encryptedText = '';
-  
-  for (let i = 0; i < text.length; i++) {
-    let char = text[i].toLowerCase();
-    if (alphabet.includes(char)) {
-      let index = alphabet.indexOf(char);
-      encryptedText += table[index];
-    } else {
-      encryptedText += char;
+
+  if (table.length < 26) {
+    alert('your substitution alphabet needs to contain 26 letters')
+  }
+  else {
+
+    for (let i = 0; i < text.length; i++) {
+      let char = text[i].toLowerCase();
+      if (alphabet.includes(char)) {
+        let index = alphabet.indexOf(char);
+        encryptedText += table[index];
+      } else {
+        encryptedText += char;
+      }
     }
   }
-  
   return encryptedText;
 }
+
+// 
+
+console.log(caesarCipherAlgorithm('adem badem', 3))
