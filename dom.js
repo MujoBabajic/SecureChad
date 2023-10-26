@@ -5,6 +5,7 @@ const caesarShiftInput = document.querySelector("#caesar-shift-input");
 const vigenereKeywordInput = document.querySelector("#vigenere-keyword-input");
 const encoderOutput = document.querySelector("#encoder-text-output");
 const encodeButton = document.querySelector("#encode-button");
+const substitutionInput = document.querySelector('#substitution-input')
 
 //DECODER REFERENCES
 const decoderInput = document.querySelector("#decoder-text-input");
@@ -46,6 +47,12 @@ encodeButton.addEventListener('click', () => {
   }
   else if (encoderAlgorithmSelect.value == 'rot13-algorithm') {
     encoderOutput.value = ROT13Cipher(encoderInput.value);
+  }
+  else if (encoderAlgorithmSelect.value == 'atbash-algorithm') {
+    encoderOutput.value = atbashCipher(encoderInput.value);
+  }
+  else if (encoderAlgorithmSelect.value == 'substitution-algorithm') {
+    encoderOutput.value = simpleSubstitutionCipher(encoderInput.value, substitutionInput.value)
   }
 })
 
