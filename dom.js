@@ -6,7 +6,6 @@ const vigenereKeywordInput = document.querySelector("#vigenere-keyword-input");
 const substitutionInput = document.querySelector("#substitution-input");
 const encoderOutput = document.querySelector("#encoder-text-output");
 const encodeButton = document.querySelector("#encode-button");
-const substitutionInput = document.querySelector('#substitution-input')
 
 //DECODER REFERENCES
 const decoderInput = document.querySelector("#decoder-text-input");
