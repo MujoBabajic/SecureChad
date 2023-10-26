@@ -34,3 +34,18 @@ encoderAlgorithmSelect.addEventListener("change", () => {
     document.querySelector("#substitution-config").style.display = "none";
   }
 });
+
+
+encodeButton.addEventListener('click', () => {
+  if (encoderAlgorithmSelect.value == 'caesar-algorithm') {
+    encoderOutput.value = caesarCipherAlgorithm(encoderInput.value, caesarShiftInput.value);
+    console.log(caesarCipherAlgorithm(encoderInput.value, caesarShiftInput))
+  }
+  else if (encoderAlgorithmSelect.value == 'vigenere-algorithm') {
+    encoderOutput.value = vigenereCipherAlgorithm(encoderInput.value, vigenereKeywordInput.value)
+  }
+  else if (encoderAlgorithmSelect.value == 'rot13-algorithm') {
+    encoderOutput.value = ROT13Cipher(encoderInput.value);
+  }
+})
+

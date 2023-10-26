@@ -96,3 +96,7 @@ function simpleSubstitutionCipher(text, table) {
   
   return encryptedText;
 }
+
+// 
+
+console.log(caesarCipherAlgorithm('adem badem', 3))
