@@ -22,7 +22,7 @@ function caesarCipherAlgorithm(text, shiftNum) {
     }
   }
 
-  finalHash = charactersArray.join("") + `--cs--${shiftNum}`;
+  finalHash = charactersArray.join("") + `--cc--${shiftNum}`;
   return finalHash
 }
 
@@ -83,7 +83,7 @@ function atbashCipher(text) {
     }
   }
 
-  finalHash = encryptedText + `--ac-`
+  finalHash = encryptedText + `--ac`
 
   return finalHash;
 }
@@ -114,3 +114,58 @@ function simpleSubstitutionCipher(text, table) {
 }
 
 //
+function ccDecoder(cipher) {
+
+}
+
+function vcDecoder(cipher) {
+
+}
+
+function acDecoder(cipher) {
+
+}
+
+function sscDecoder(cipher) {
+
+}
+
+function decoder(hash) {
+  let hashArr = hash.split('--');
+  let algorithmCode = hashArr[hashArr.length - 2]; // code that identifies the algoritm (ac, cc, ...)
+  let algorithmArg = hashArr[hashArr.length - 1]; // argument that is used in an algorithm (a number, a keyword, alphabet ...)
+  let rawCipher = ''; // cipher that needs to be decoded
+
+  let possibleAlgorithmCodes = ['cc', 'vc', 'ac', 'ssc']
+
+  for (let i = 0; i < hashArr.length; i++) {
+    if (!possibleAlgorithmCodes.includes(hashArr[i])) {
+      rawCipher += `${hashArr[i]}--`;
+    }
+    else {
+      break
+    }
+  }
+  rawCipher = rawCipher.replace(/--$/, '')
+
+  if (algorithmArg == 'ac') {
+    algorithmCode = algorithmArg;
+  }
+
+  switch (algorithmCode) {
+    case 'cc':
+      return ccDecoder(rawCipher);
+      break;
+    case 'vc':
+      return vcDecoder(rawCipher);
+      break;
+    case 'ac':
+      acDecoder(rawCipher);
+    case 'ssc':
+      sscDecoder(rawCipher);
+      break;
+    default:
+    alert('something went wnrong, report this to the developers');
+    break;
+  }
+}
