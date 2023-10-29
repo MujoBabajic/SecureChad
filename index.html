@@ -5,23 +5,40 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>SecureChad</title>
     <link rel="stylesheet" href="styles.css" />
-    <link rel="icon" href="pictures/icon-logo.png" />
+    <link rel="icon" href="pictures/favicon-logo.png" />
   </head>
 
   <body>
     <header>
       <img src="pictures/header-logo.png" alt="header-logo" />
+      <img
+        src="pictures/dark_mode_icon.png"
+        alt="dark_mode_icon"
+        id="dark-mode-button"
+        onclick="engageDarkMode()"
+      />
     </header>
 
     <div id="main-container">
-      <h2>Encoder</h2>
-      <br />
+      <div class="tabs">
+        <button
+          class="tablinks"
+          id="defaultOpen"
+          onclick="openTab(event, 'encoder-container')"
+        >
+          Encoder
+        </button>
+        <button class="tablinks" onclick="openTab(event, 'decoder-container')">
+          Decoder
+        </button>
+      </div>
+
       <!-- ENCODER ELEMENTS -->
-      <div id="encoder-container">
+      <div id="encoder-container" class="tabcontent">
         <div id="encoder-text-container" class="io-containers">
           <div class="io-header">Input</div>
           <div class="io-body">
-            <textarea id="encoder-text-input"></textarea>
+            <textarea id="encoder-text-input" spellcheck="false"></textarea>
           </div>
         </div>
 
@@ -40,7 +57,7 @@
             <div id="caesar-config">
               <br />
               <br />
-              <label for="caesar-shift-input">Shift number:</label>
+              <label for="caesar-shift-input">Shift:</label>
               <input type="number" id="caesar-shift-input" />
             </div>
 
@@ -53,7 +70,7 @@
 
             <div id="substitution-config" style="display: none">
               <br />
-              <p>Alphabet - abcdefghijklmnopqrstuvwxyz</p>
+              <p id="sub-p">Alphabet - abcdefghijklmnopqrstuvwxyz</p>
               <br />
               <label for="substitution-input">Substitute:</label>
               <input type="text" id="substitution-input" />
@@ -62,28 +79,32 @@
         </div>
 
         <div id="encoder-output-container" class="io-containers">
-          <div class="io-header">Output</div>
-          <div class="io-body">
-            <textarea id="encoder-text-output"></textarea>
+          <div class="io-header">
+            Output
+            <img
+              src="pictures/clipboard_icon.png"
+              alt="clipboard-icon"
+              class="clipboard"
+              onclick="copyToClipboard(
+              'encoder')"
+            />
           </div>
+          <div class="io-body">
+            <textarea id="encoder-text-output" spellcheck="false"></textarea>
+          </div>
+        </div>
+
+        <div class="submit-container">
+          <button id="encode-button" class="submit-button">Encode</button>
         </div>
       </div>
 
-      <div class="submit-container">
-        <button id="encode-button" class="submit-button">Encode</button>
-      </div>
-
-      <hr />
-      <br />
-
-      <h2>Decoder</h2>
-      <br />
       <!-- DECODER ELEMENTS -->
-      <div id="decoder-container">
+      <div id="decoder-container" class="tabcontent" style="display: none">
         <div id="decoder-text-container" class="io-containers">
           <div class="io-header">Input</div>
           <div class="io-body">
-            <textarea id="decoder-text-input"></textarea>
+            <textarea id="decoder-text-input" spellcheck="false"></textarea>
           </div>
         </div>
 
@@ -95,15 +116,22 @@
         </div>
 
         <div id="encoder-output-container" class="io-containers">
-          <div class="io-header">Output</div>
+          <div class="io-header">
+            Output<img
+              src="pictures/clipboard_icon.png"
+              alt="clipboard-icon"
+              class="clipboard"
+              onclick="copyToClipboard('decoder')"
+            />
+          </div>
           <div class="io-body">
-            <textarea id="decoder-text-output"></textarea>
+            <textarea id="decoder-text-output" spellcheck="false"></textarea>
           </div>
         </div>
-      </div>
 
-      <div class="submit-container">
-        <button id="decode-button" class="submit-button">Decode</button>
+        <div class="submit-container">
+          <button id="decode-button" class="submit-button">Decode</button>
+        </div>
       </div>
     </div>
 
