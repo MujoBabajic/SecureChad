@@ -79,8 +79,7 @@ function copyToClipboard(button) {
 
 //DARK MODE
 function engageDarkMode() {
-  let element = document.body;
-  element.classList.toggle("dark-mode");
+  document.body.classList.toggle("dark-mode");
 }
 
 //ENCRYPTING TEXT AND DISPLAYING IT

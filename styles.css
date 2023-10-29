@@ -35,7 +35,7 @@ header #dark-mode-button {
 header #dark-mode-button:hover {
   cursor: pointer;
   border-radius: 50%;
-  background-color: rgba(214, 212, 212, 0.7);
+  background-color: rgba(214, 212, 212, 0.3);
 }
 
 body {
@@ -307,7 +307,7 @@ footer a:visited {
 }
 
 .dark-mode .tabs button:hover {
-  background-color: #e47433;
+  background-color: #f18547;
 }
 
 .dark-mode .tabs button.active {
