@@ -92,7 +92,6 @@ encodeButton.addEventListener("click", () => {
         encoderInput.value,
         caesarShiftInput.value
       );
-      
     } else if (encoderAlgorithmSelect.value == "vigenere-algorithm") {
       encoderOutput.value = vigenereCipherAlgorithm(
         encoderInput.value,
@@ -111,7 +110,24 @@ encodeButton.addEventListener("click", () => {
   }
 });
 
-decodeButton.addEventListener('click', () => {
-   decoderOutput.value = decoder(decoderInput.value);
-  
-  });
+//DECRYPTING TEXT AND DISPLAYING THE USED ALGORITHM
+function findLastDoubleDash(str) {
+  for (let i = str.length - 2; i >= 0; i--) {
+    if (str[i] === "-" && str[i + 1] === "-") {
+      return `${str[i - 2]}${str[i - 1]}`;
+    }
+  }
+  return -1; // Return -1 if '--' is not found in the string
+}
+
+decodeButton.addEventListener("click", () => {
+  decoderOutput.value = decoder(decoderInput.value);
+
+  let algo = findLastDoubleDash(decoderInput.value);
+  if (algo == "cc") decoderDetectorOutput.innerText = "Caesar Cipher";
+  else if (algo == "vc") decoderDetectorOutput.innerText = "Vigenere Cipher";
+  else if (algo == "rot13") decoderDetectorOutput.innerText = "ROT13 Cipher";
+  else if (algo == "ac") decoderDetectorOutput.innerText = "Atbash Cipher";
+  else if (algo == "sc")
+    decoderDetectorOutput.innerText = "Substitution Cipher";
+});
