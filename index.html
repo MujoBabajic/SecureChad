@@ -14,14 +14,25 @@
     </header>
 
     <div id="main-container">
-      <h2>Encoder</h2>
-      <br />
+      <div class="tabs">
+        <button
+          class="tablinks"
+          id="defaultOpen"
+          onclick="openTab(event, 'encoder-container')"
+        >
+          Encoder
+        </button>
+        <button class="tablinks" onclick="openTab(event, 'decoder-container')">
+          Decoder
+        </button>
+      </div>
+
       <!-- ENCODER ELEMENTS -->
-      <div id="encoder-container">
+      <div id="encoder-container" class="tabcontent">
         <div id="encoder-text-container" class="io-containers">
           <div class="io-header">Input</div>
           <div class="io-body">
-            <textarea id="encoder-text-input"></textarea>
+            <textarea id="encoder-text-input" spellcheck="false"></textarea>
           </div>
         </div>
 
@@ -62,28 +73,32 @@
         </div>
 
         <div id="encoder-output-container" class="io-containers">
-          <div class="io-header">Output</div>
-          <div class="io-body">
-            <textarea id="encoder-text-output"></textarea>
+          <div class="io-header">
+            Output
+            <img
+              src="pictures/clipboard_icon.png"
+              alt="clipboard-icon"
+              class="clipboard"
+              onclick="copyToClipboard(
+              'encoder')"
+            />
           </div>
+          <div class="io-body">
+            <textarea id="encoder-text-output" spellcheck="false"></textarea>
+          </div>
+        </div>
+
+        <div class="submit-container">
+          <button id="encode-button" class="submit-button">Encode</button>
         </div>
       </div>
 
-      <div class="submit-container">
-        <button id="encode-button" class="submit-button">Encode</button>
-      </div>
-
-      <hr />
-      <br />
-
-      <h2>Decoder</h2>
-      <br />
       <!-- DECODER ELEMENTS -->
-      <div id="decoder-container">
+      <div id="decoder-container" class="tabcontent" style="display: none">
         <div id="decoder-text-container" class="io-containers">
           <div class="io-header">Input</div>
           <div class="io-body">
-            <textarea id="decoder-text-input"></textarea>
+            <textarea id="decoder-text-input" spellcheck="false"></textarea>
           </div>
         </div>
 
@@ -95,15 +110,22 @@
         </div>
 
         <div id="encoder-output-container" class="io-containers">
-          <div class="io-header">Output</div>
+          <div class="io-header">
+            Output<img
+              src="pictures/clipboard_icon.png"
+              alt="clipboard-icon"
+              class="clipboard"
+              onclick="copyToClipboard('decoder')"
+            />
+          </div>
           <div class="io-body">
-            <textarea id="decoder-text-output"></textarea>
+            <textarea id="decoder-text-output" spellcheck="false"></textarea>
           </div>
         </div>
-      </div>
 
-      <div class="submit-container">
-        <button id="decode-button" class="submit-button">Decode</button>
+        <div class="submit-container">
+          <button id="decode-button" class="submit-button">Decode</button>
+        </div>
       </div>
     </div>
 
