@@ -10,21 +10,32 @@ header {
   display: flex;
   flex-direction: row;
   width: 100%;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   height: 65px;
   background: linear-gradient(
     to bottom right,
-    rgb(160, 182, 220),
+    rgb(53, 87, 146),
     rgb(149, 201, 215)
   );
-  font-size: 18px;
-  color: rgb(61, 89, 134);
+  padding: 0 10px 0 10px;
 }
 
 header img {
   width: 250px;
   height: 40px;
+}
+
+header #dark-mode-button {
+  width: 42px;
+  height: 42px;
+  padding: 3px;
+}
+
+header #dark-mode-button:hover {
+  cursor: pointer;
+  border-radius: 50%;
+  background-color: rgba(214, 212, 212, 0.7);
 }
 
 body {
@@ -48,7 +59,7 @@ body {
 .tabs {
   overflow: hidden;
   border: 1px solid #ccc;
-  background-color: #f1f1f1;
+  background-color: #e9e8e8;
 }
 
 .tabs button {
@@ -107,13 +118,15 @@ body {
 }
 
 .io-header img {
-  width: 25px;
-  height: 25px;
+  width: 30px;
+  height: 30px;
+  padding: 5px;
   filter: invert(40%);
 }
 
 .io-header img:hover {
   cursor: pointer;
+  background-color: rgba(192, 206, 219, 0.2);
 }
 
 .io-body {
@@ -148,12 +161,6 @@ select:focus {
   -webkit-appearance: none;
 }
 
-#caesar-shift-input {
-  width: 40px;
-  height: 30px;
-  padding: 3px;
-}
-
 #caesar-shift-input:focus,
 #vigenere-keyword-input:focus,
 #substitution-input:focus {
@@ -161,7 +168,8 @@ select:focus {
 }
 
 #vigenere-keyword-input,
-#substitution-input {
+#substitution-input,
+#caesar-shift-input {
   height: 25px;
   padding: 3px;
   font-size: 15px;
@@ -210,15 +218,102 @@ footer {
   height: 65px;
   background: linear-gradient(
     to bottom right,
-    rgb(160, 182, 220),
-    rgb(149, 201, 215)
+    rgb(149, 201, 215),
+    rgb(53, 87, 146)
   );
   font-size: 16px;
-  color: rgb(61, 89, 134);
+  color: rgb(221, 225, 230);
   font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
   user-select: none;
 }
 
 footer a {
   text-decoration: none;
+}
+
+footer a:visited {
+  color: rgb(196, 198, 202);
+}
+
+/* DARK MODE */
+
+.dark-mode {
+  background-color: rgb(70, 70, 70);
+  color: white;
+}
+
+.dark-mode header {
+  background: linear-gradient(
+    to bottom right,
+    rgb(17, 89, 109),
+    rgb(94, 122, 170)
+  );
+}
+
+.dark-mode footer {
+  background: linear-gradient(
+    to bottom right,
+    rgb(94, 122, 170),
+    rgb(17, 89, 109)
+  );
+  color: rgb(243, 243, 243);
+}
+
+.dark-mode footer a:visited {
+  color: rgb(202, 202, 202);
+}
+
+.dark-mode #dark-mode-button {
+  filter: invert(100%);
+}
+
+.dark-mode .io-header {
+  background-color: rgb(82, 119, 184);
+  color: rgb(243, 243, 243);
+}
+
+.dark-mode .io-body,
+.dark-mode textarea,
+.dark-mode label,
+.dark-mode #sub-p,
+.dark-mode select {
+  background-color: rgb(90, 90, 90);
+  color: rgb(243, 243, 243);
+}
+
+.dark-mode .submit-button {
+  background-color: rgb(82, 119, 184);
+  border: 1px solid rgb(82, 119, 184);
+  color: rgb(243, 243, 243);
+}
+
+.dark-mode .submit-button:hover {
+  background-color: rgb(73, 153, 228);
+}
+
+.dark-mode .tabs {
+  background-color: #f19252;
+}
+
+.dark-mode .tabs button {
+  background-color: inherit;
+  float: left;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 12px 14px;
+  font-size: 18px;
+  color: rgb(39, 39, 39);
+}
+
+.dark-mode .tabs button:hover {
+  background-color: #e47433;
+}
+
+.dark-mode .tabs button.active {
+  background-color: #e47433;
+}
+
+.dark-mode .io-header img {
+  filter: invert(100%);
 }

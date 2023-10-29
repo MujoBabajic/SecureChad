@@ -5,12 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>SecureChad</title>
     <link rel="stylesheet" href="styles.css" />
-    <link rel="icon" href="pictures/icon-logo.png" />
+    <link rel="icon" href="pictures/favicon-logo.png" />
   </head>
 
   <body>
     <header>
       <img src="pictures/header-logo.png" alt="header-logo" />
+      <img
+        src="pictures/dark_mode_icon.png"
+        alt="dark_mode_icon"
+        id="dark-mode-button"
+        onclick="engageDarkMode()"
+      />
     </header>
 
     <div id="main-container">
@@ -51,7 +57,7 @@
             <div id="caesar-config">
               <br />
               <br />
-              <label for="caesar-shift-input">Shift number:</label>
+              <label for="caesar-shift-input">Shift:</label>
               <input type="number" id="caesar-shift-input" />
             </div>
 
@@ -64,7 +70,7 @@
 
             <div id="substitution-config" style="display: none">
               <br />
-              <p>Alphabet - abcdefghijklmnopqrstuvwxyz</p>
+              <p id="sub-p">Alphabet - abcdefghijklmnopqrstuvwxyz</p>
               <br />
               <label for="substitution-input">Substitute:</label>
               <input type="text" id="substitution-input" />

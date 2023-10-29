@@ -77,6 +77,12 @@ function copyToClipboard(button) {
   alert("Text copied");
 }
 
+//DARK MODE
+function engageDarkMode() {
+  let element = document.body;
+  element.classList.toggle("dark-mode");
+}
+
 //ENCRYPTING TEXT AND DISPLAYING IT
 encodeButton.addEventListener("click", () => {
   if (encoderAlgorithmSelect.value == "") {
