@@ -1,5 +1,6 @@
 function caesarCipherAlgorithm(text, shiftNum) {
   shiftNum = shiftNum % 26;
+  let finalHash;
 
   let charactersArray = text.split("");
 
@@ -21,11 +22,13 @@ function caesarCipherAlgorithm(text, shiftNum) {
     }
   }
 
-  return charactersArray.join("");
+  finalHash = charactersArray.join("") + `--cs--${shiftNum}`;
+  return finalHash
 }
 
 function vigenereCipherAlgorithm(text, keyword) {
   keyword = keyword.replace(/[^A-Za-z]/g, "").toUpperCase();
+  let finalHash;
 
   let encryptedText = "";
   let keyIndex = 0;
@@ -54,8 +57,8 @@ function vigenereCipherAlgorithm(text, keyword) {
 
     encryptedText += char;
   }
-
-  return encryptedText;
+  finalHash = encryptedText + `--vc--${keyword}`
+  return finalHash;
 }
 
 
@@ -102,6 +105,4 @@ function simpleSubstitutionCipher(text, table) {
   return encryptedText;
 }
 
-// 
-
-console.log(caesarCipherAlgorithm('adem badem', 3))
+//
