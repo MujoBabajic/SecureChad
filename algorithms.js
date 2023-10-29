@@ -1,5 +1,6 @@
 function caesarCipherAlgorithm(text, shiftNum) {
   shiftNum = shiftNum % 26;
+  let finalHash;
 
   let charactersArray = text.split("");
 
@@ -21,11 +22,13 @@ function caesarCipherAlgorithm(text, shiftNum) {
     }
   }
 
-  return charactersArray.join("");
+  finalHash = charactersArray.join("") + `--cs--${shiftNum}`; 
+  return finalHash
 }
 
 function vigenereCipherAlgorithm(text, keyword) {
   keyword = keyword.replace(/[^A-Za-z]/g, "").toUpperCase();
+
 
   let encryptedText = "";
   let keyIndex = 0;
