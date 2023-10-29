@@ -92,7 +92,7 @@ encodeButton.addEventListener("click", () => {
         encoderInput.value,
         caesarShiftInput.value
       );
-      console.log(caesarCipherAlgorithm(encoderInput.value, caesarShiftInput));
+      
     } else if (encoderAlgorithmSelect.value == "vigenere-algorithm") {
       encoderOutput.value = vigenereCipherAlgorithm(
         encoderInput.value,
@@ -110,3 +110,8 @@ encodeButton.addEventListener("click", () => {
     }
   }
 });
+
+decodeButton.addEventListener('click', () => {
+   decoderOutput.value = decoder(decoderInput.value);
+  
+  });

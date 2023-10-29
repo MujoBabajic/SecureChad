@@ -22,7 +22,7 @@ function caesarCipherAlgorithm(text, shiftNum) {
     }
   }
 
-  finalHash = charactersArray.join("") + `--cs--${shiftNum}`;
+  finalHash = charactersArray.join("") + `--cc--${shiftNum}`;
   return finalHash
 }
 
@@ -83,7 +83,7 @@ function atbashCipher(text) {
     }
   }
 
-  finalHash = encryptedText + `--ac-`
+  finalHash = encryptedText + `--ac`
 
   return finalHash;
 }
@@ -114,3 +114,88 @@ function simpleSubstitutionCipher(text, table) {
 }
 
 //
+function ccDecoder(cipherText, shift) {
+  const alphabet = 'abcdefghijklmnopqrstuvwxyz';
+  const cipherArray = cipherText.toLowerCase().split('');
+  const decryptedArray = [];
+
+  for (let i = 0; i < cipherArray.length; i++) {
+    const char = cipherArray[i];
+    if (alphabet.includes(char)) {
+      const index = (alphabet.indexOf(char) - shift + 26) % 26;
+      const decryptedChar = alphabet[index];
+      decryptedArray.push(cipherText[i] === cipherText[i].toUpperCase() ? decryptedChar.toUpperCase() : decryptedChar);
+    } else {
+      decryptedArray.push(char);
+    }
+  }
+
+  return decryptedArray.join('');
+}
+
+function vcDecoder(cipherText) {
+
+}
+
+function acDecoder(cipherText) {
+  let decryptedText = '';
+  let alphabet = 'abcdefghijklmnopqrstuvwxyz';
+  let reverseAlphabet = 'zyxwvutsrqponmlkjihgfedcba';
+
+  for (let i = 0; i < cipherText.length; i++) {
+    let char = cipherText[i].toLowerCase();
+    if (alphabet.includes(char)) {
+      let index = alphabet.indexOf(char);
+      let reversedChar = reverseAlphabet[index];
+      decryptedText += cipherText[i] === cipherText[i].toUpperCase() ? reversedChar.toUpperCase() : reversedChar;
+    } else {
+      decryptedText += char;
+    }
+  }
+
+  return decryptedText;
+}
+
+function sscDecoder(cipherText) {
+
+}
+
+function decoder(hash) {
+  let hashArr = hash.split('--');
+  let algorithmCode = hashArr[hashArr.length - 2]; // code that identifies the algoritm (ac, cc, ...)
+  let algorithmArg = hashArr[hashArr.length - 1]; // argument that is used in an algorithm (shift number, a keyword, alphabet ...)
+  let rawCipher = ''; // cipher that needs to be decoded
+
+  let possibleAlgorithmCodes = ['cc', 'vc', 'ac', 'ssc']
+
+  for (let i = 0; i < hashArr.length; i++) {
+    if (!possibleAlgorithmCodes.includes(hashArr[i])) {
+      rawCipher += `${hashArr[i]}--`;
+    }
+    else {
+      break
+    }
+  }
+  rawCipher = rawCipher.replace(/--$/, '')
+
+  if (algorithmArg == 'ac') {
+    algorithmCode = algorithmArg;
+  }
+
+  switch (algorithmCode) {
+    case 'cc':
+      return ccDecoder(rawCipher, algorithmArg);
+      break;
+    case 'vc':
+      return vcDecoder();
+      break;
+    case 'ac':
+      return acDecoder(rawCipher);
+    case 'ssc':
+      return sscDecoder();
+      break;
+    default:
+      alert('something went wnrong, report this to the developers');
+      break;
+  }
+}
