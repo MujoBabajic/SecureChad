@@ -12,7 +12,7 @@ header {
   width: 100%;
   justify-content: center;
   align-items: center;
-  height: 77px;
+  height: 65px;
   background: linear-gradient(
     to bottom right,
     rgb(160, 182, 220),
@@ -23,12 +23,12 @@ header {
 }
 
 header img {
-  width: 370px;
-  height: 60px;
+  width: 250px;
+  height: 40px;
 }
 
 body {
-  background-color: rgb(248, 248, 248);
+  background-color: #f2f4f6;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -45,36 +45,81 @@ body {
   width: 90%;
 }
 
+.tabs {
+  overflow: hidden;
+  border: 1px solid #ccc;
+  background-color: #f1f1f1;
+}
+
+.tabs button {
+  background-color: inherit;
+  float: left;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 12px 14px;
+  font-size: 18px;
+  color: rgb(39, 39, 39);
+}
+
+.tabs button:hover {
+  background-color: #ddd;
+}
+
+.tabs button.active {
+  background-color: #cccccc;
+}
+
+.tabcontent {
+  display: none;
+  border: 1px solid #ccc;
+  border-top: none;
+}
+
 #encoder-container,
 #decoder-container {
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
+  flex-wrap: wrap;
 }
 
 .io-containers {
   display: flex;
   flex-direction: column;
-  width: 30%;
-  padding: 10px;
-  margin: 5px;
+  width: 31%;
+  padding: 10px 5px 0;
+  margin: 5px 5px 0 5px;
 }
 
 .io-header {
-  height: 50px;
+  height: 45px;
   background-color: rgb(176, 215, 252);
   color: rgb(36, 67, 150);
   display: flex;
   padding-left: 15px;
+  padding-right: 10px;
   align-items: center;
-  font-size: 25px;
+  font-size: 18px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.io-header img {
+  width: 25px;
+  height: 25px;
+  filter: invert(40%);
+}
+
+.io-header img:hover {
+  cursor: pointer;
 }
 
 .io-body {
   height: 175px;
   background-color: rgb(255, 255, 255);
-  padding: 10px;
+  padding: 10px 10px 10px 10px;
 }
 
 textarea {
@@ -83,18 +128,19 @@ textarea {
   height: 100%;
   border: none;
   outline: none;
-  font-size: 20px;
+  font-size: 18px;
   font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
     "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
 }
 
 #algorithm-select {
   width: 100%;
-  font-size: 17px;
+  font-size: 16px;
+  padding: 5px;
 }
 
-select {
-  padding: 5px;
+select:focus {
+  outline: none;
 }
 
 #caesar-shift-input::-webkit-inner-spin-button,
@@ -108,15 +154,24 @@ select {
   padding: 3px;
 }
 
+#caesar-shift-input:focus,
+#vigenere-keyword-input:focus,
+#substitution-input:focus {
+  outline: none;
+}
+
 #vigenere-keyword-input,
 #substitution-input {
   height: 25px;
   padding: 3px;
-  font-size: 16px;
+  font-size: 15px;
+  width: auto;
 }
 
-#substitution-input {
-  width: auto;
+label,
+#substitution-config p {
+  font-size: 15px;
+  color: rgb(39, 39, 39);
 }
 
 .submit-container {
@@ -125,24 +180,23 @@ select {
   flex-direction: row;
   justify-content: center;
   align-items: center;
+  padding: 5px 0;
 }
 
 .submit-button {
-  width: 120px;
-  height: 50px;
-  margin: 20px;
-  font-size: 20px;
+  width: 110px;
+  height: 40px;
+  margin: 10px;
+  font-size: 18px;
   border-radius: 5px;
-  border: 1px solid black;
+  color: rgb(36, 67, 150);
+  background-color: rgb(176, 215, 252);
+  border: 1px solid rgb(176, 215, 252);
 }
 
 .submit-button:hover {
-  background-color: rgb(149, 212, 241);
+  background-color: rgb(161, 197, 230);
   cursor: pointer;
-}
-
-hr {
-  margin-top: 15px;
 }
 
 /* FOOTER SETUP */
@@ -153,13 +207,13 @@ footer {
   width: 100%;
   justify-content: center;
   align-items: center;
-  height: 77px;
+  height: 65px;
   background: linear-gradient(
     to bottom right,
     rgb(160, 182, 220),
     rgb(149, 201, 215)
   );
-  font-size: 18px;
+  font-size: 16px;
   color: rgb(61, 89, 134);
   font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
   user-select: none;
