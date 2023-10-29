@@ -69,18 +69,23 @@ function ROT13Cipher(text) {
 function atbashCipher(text) {
   let encryptedText = '';
   let alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
+  let finalHash;
+
   for (let i = 0; i < text.length; i++) {
     let char = text[i].toLowerCase();
     if (alphabet.includes(char)) {
       let index = alphabet.indexOf(char);
       let reversedIndex = alphabet.length - 1 - index;
       encryptedText += alphabet[reversedIndex];
-    } else {
+    } 
+    else {
       encryptedText += char;
     }
   }
 
-  return encryptedText;
+  finalHash = encryptedText + `--ac-`
+
+  return finalHash;
 }
 
 function simpleSubstitutionCipher(text, table) {
