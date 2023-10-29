@@ -77,7 +77,7 @@ function atbashCipher(text) {
       let index = alphabet.indexOf(char);
       let reversedIndex = alphabet.length - 1 - index;
       encryptedText += alphabet[reversedIndex];
-    } 
+    }
     else {
       encryptedText += char;
     }
@@ -91,9 +91,11 @@ function atbashCipher(text) {
 function simpleSubstitutionCipher(text, table) {
   let alphabet = 'abcdefghijklmnopqrstuvwxyz';
   let encryptedText = '';
+  let finalHash;
 
   if (table.length < 26) {
     alert('your substitution alphabet needs to contain 26 letters')
+    return 'try again'
   }
   else {
 
@@ -106,8 +108,9 @@ function simpleSubstitutionCipher(text, table) {
         encryptedText += char;
       }
     }
+    finalHash = encryptedText + `--ssc--${table}`
+    return finalHash;
   }
-  return encryptedText;
 }
 
 //
