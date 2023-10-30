@@ -84,8 +84,8 @@ function engageDarkMode() {
 
 //ENCRYPTING TEXT AND DISPLAYING IT
 encodeButton.addEventListener("click", () => {
-  if (encoderAlgorithmSelect.value == "") {
-    alert("No text in the input");
+  if (encoderInput.value == "") {
+    encoderOutput.innerText = "No text in the input";
   } else {
     if (encoderAlgorithmSelect.value == "caesar-algorithm") {
       encoderOutput.value = caesarCipherAlgorithm(
@@ -121,13 +121,17 @@ function findLastDoubleDash(str) {
 }
 
 decodeButton.addEventListener("click", () => {
-  decoderOutput.value = decoder(decoderInput.value);
+  if (decoderInput.value == "")
+    decoderOutput.innerText = "No text in the input";
+  else {
+    decoderOutput.value = decoder(decoderInput.value);
 
-  let algo = findLastDoubleDash(decoderInput.value);
-  if (algo == "cc") decoderDetectorOutput.innerText = "Caesar Cipher";
-  else if (algo == "vc") decoderDetectorOutput.innerText = "Vigenere Cipher";
-  else if (algo == "rot13") decoderDetectorOutput.innerText = "ROT13 Cipher";
-  else if (algo == "ac") decoderDetectorOutput.innerText = "Atbash Cipher";
-  else if (algo == "sc")
-    decoderDetectorOutput.innerText = "Substitution Cipher";
+    let algo = findLastDoubleDash(decoderInput.value);
+    if (algo == "cc") decoderDetectorOutput.innerText = "Caesar Cipher";
+    else if (algo == "vc") decoderDetectorOutput.innerText = "Vigenere Cipher";
+    else if (algo == "rot13") decoderDetectorOutput.innerText = "ROT13 Cipher";
+    else if (algo == "ac") decoderDetectorOutput.innerText = "Atbash Cipher";
+    else if (algo == "sc")
+      decoderDetectorOutput.innerText = "Substitution Cipher";
+  }
 });
