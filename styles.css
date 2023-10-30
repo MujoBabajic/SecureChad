@@ -70,6 +70,7 @@ body {
   cursor: pointer;
   padding: 12px 14px;
   font-size: 18px;
+  font-weight: bold;
   color: rgb(39, 39, 39);
 }
 
@@ -113,6 +114,7 @@ body {
   padding-right: 10px;
   align-items: center;
   font-size: 18px;
+  font-weight: bold;
   display: flex;
   justify-content: space-between;
 }
@@ -173,7 +175,8 @@ select:focus {
   height: 25px;
   padding: 3px;
   font-size: 15px;
-  width: auto;
+  width: 100%;
+  max-width: 100%;
 }
 
 label,
@@ -196,6 +199,7 @@ label,
   height: 40px;
   margin: 10px;
   font-size: 18px;
+  font-weight: bold;
   border-radius: 5px;
   color: rgb(36, 67, 150);
   background-color: rgb(176, 215, 252);
@@ -316,4 +320,51 @@ footer a:visited {
 
 .dark-mode .io-header img {
   filter: invert(100%);
+}
+
+/* RESPONSIVE */
+
+@media screen and (max-width: 600px) {
+  #encoder-container,
+  #decoder-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  .io-containers {
+    width: 96%;
+  }
+
+  .io-body {
+    height: 160px;
+  }
+
+  #vigenere-keyword-input,
+  #substitution-input,
+  #caesar-shift-input {
+    height: 30px;
+    padding: 3px;
+    font-size: 15px;
+  }
+
+  #main-container {
+    margin: 5px;
+    font-family: Arial, Helvetica, sans-serif;
+    flex: 1;
+    width: 98%;
+  }
+
+  .submit-button {
+    width: 80%;
+    height: 60px;
+    margin: 10px;
+    font-size: 18px;
+    border-radius: 5px;
+    color: rgb(36, 67, 150);
+    background-color: rgb(176, 215, 252);
+    border: 1px solid rgb(176, 215, 252);
+  }
 }
