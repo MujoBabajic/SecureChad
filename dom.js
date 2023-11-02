@@ -60,23 +60,6 @@ function openTab(evt, tabName) {
 
 document.getElementById("defaultOpen").click();
 
-//COPY TO CLIPBOARD BUTTON ACTIONS
-function copyToClipboard(button) {
-  if (button == "encoder") {
-    encoderOutput.select();
-    encoderOutput.setSelectionRange(0, 99999);
-
-    document.execCommand("copy");
-  } else if (button == "decoder") {
-    decoderOutput.select();
-    decoderOutput.setSelectionRange(0, 99999);
-
-    document.execCommand("copy");
-  }
-
-  alert("Text copied");
-}
-
 //DARK MODE
 function engageDarkMode() {
   document.body.classList.toggle("dark-mode");
@@ -88,21 +71,21 @@ encodeButton.addEventListener("click", () => {
     encoderOutput.innerText = "No text in the input";
   } else {
     if (encoderAlgorithmSelect.value == "caesar-algorithm") {
-      encoderOutput.value = caesarCipherAlgorithm(
+      encoderOutput.value = caesarCipherEncoder(
         encoderInput.value,
         caesarShiftInput.value
       );
     } else if (encoderAlgorithmSelect.value == "vigenere-algorithm") {
-      encoderOutput.value = vigenereCipherAlgorithm(
+      encoderOutput.value = vigenereCipherEncoder(
         encoderInput.value,
         vigenereKeywordInput.value
       );
     } else if (encoderAlgorithmSelect.value == "rot13-algorithm") {
-      encoderOutput.value = ROT13Cipher(encoderInput.value);
+      encoderOutput.value = ROT13CipherEncoder(encoderInput.value);
     } else if (encoderAlgorithmSelect.value == "atbash-algorithm") {
-      encoderOutput.value = atbashCipher(encoderInput.value);
+      encoderOutput.value = atbashCipherEncoder(encoderInput.value);
     } else if (encoderAlgorithmSelect.value == "substitution-algorithm") {
-      encoderOutput.value = simpleSubstitutionCipher(
+      encoderOutput.value = substitutionCipherEncoder(
         encoderInput.value,
         substitutionInput.value
       );
@@ -117,7 +100,7 @@ function findLastDoubleDash(str) {
       return `${str[i - 2]}${str[i - 1]}`;
     }
   }
-  return -1; // Return -1 if '--' is not found in the string
+  return -1;
 }
 
 decodeButton.addEventListener("click", () => {
@@ -135,3 +118,20 @@ decodeButton.addEventListener("click", () => {
       decoderDetectorOutput.innerText = "Substitution Cipher";
   }
 });
+
+//COPY TO CLIPBOARD BUTTON ACTIONS
+function copyToClipboard(button) {
+  if (button == "encoder") {
+    encoderOutput.select();
+    encoderOutput.setSelectionRange(0, 99999);
+
+    navigator.clipboard.writeText(encoderOutput.value);
+  } else if (button == "decoder") {
+    decoderOutput.select();
+    decoderOutput.setSelectionRange(0, 99999);
+
+    navigator.clipboard.writeText(decoderOutput.value);
+  }
+
+  alert("Text copied");
+}
