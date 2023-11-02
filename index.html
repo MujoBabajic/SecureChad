@@ -70,10 +70,13 @@
 
             <div id="substitution-config" style="display: none">
               <br />
-              <p id="sub-p">Alphabet - abcdefghijklmnopqrstuvwxyz</p>
               <br />
               <label for="substitution-input">Substitute:</label>
-              <input type="text" id="substitution-input" />
+              <input
+                type="text"
+                id="substitution-input"
+                placeholder="abcdefghijklmnopqrstuvwxyz"
+              />
             </div>
           </div>
         </div>
@@ -86,9 +89,10 @@
               alt="clipboard-icon"
               class="clipboard"
               onclick="copyToClipboard(
-              'encoder')"
+                'encoder')"
             />
           </div>
+
           <div class="io-body">
             <textarea id="encoder-text-output" spellcheck="false"></textarea>
           </div>
@@ -116,13 +120,15 @@
         </div>
 
         <div id="encoder-output-container" class="io-containers">
-          <div class="io-header">
-            Output<img
-              src="pictures/clipboard_icon.png"
-              alt="clipboard-icon"
-              class="clipboard"
-              onclick="copyToClipboard('decoder')"
-            />
+          <div class="tooltip">
+            <div class="io-header">
+              Output<img
+                src="pictures/clipboard_icon.png"
+                alt="clipboard-icon"
+                class="clipboard"
+                onclick="copyToClipboard('decoder')"
+              />
+            </div>
           </div>
           <div class="io-body">
             <textarea id="decoder-text-output" spellcheck="false"></textarea>

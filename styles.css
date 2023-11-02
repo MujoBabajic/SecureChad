@@ -30,11 +30,12 @@ header #dark-mode-button {
   width: 42px;
   height: 42px;
   padding: 3px;
+  border-radius: 50%;
+  transition: background-color 0.3s;
 }
 
 header #dark-mode-button:hover {
   cursor: pointer;
-  border-radius: 50%;
   background-color: rgba(214, 212, 212, 0.3);
 }
 
@@ -45,6 +46,7 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  transition: background-color 0.3s;
 }
 
 /* MAIN CONTAINER SETUP */
@@ -53,7 +55,7 @@ body {
   margin: 15px;
   font-family: Arial, Helvetica, sans-serif;
   flex: 1;
-  width: 90%;
+  width: 93%;
 }
 
 .tabs {
@@ -72,6 +74,7 @@ body {
   font-size: 18px;
   font-weight: bold;
   color: rgb(39, 39, 39);
+  transition: background-color 0.3s;
 }
 
 .tabs button:hover {
@@ -101,8 +104,8 @@ body {
   display: flex;
   flex-direction: column;
   width: 31%;
-  padding: 10px 5px 0;
-  margin: 5px 5px 0 5px;
+  margin: 15px 10px 0 10px;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.14);
 }
 
 .io-header {
@@ -123,6 +126,8 @@ body {
   width: 30px;
   height: 30px;
   padding: 5px;
+  border-radius: 5px;
+  transition: background-color 0.3s;
   filter: invert(40%);
 }
 
@@ -132,9 +137,9 @@ body {
 }
 
 .io-body {
-  height: 175px;
+  height: 180px;
   background-color: rgb(255, 255, 255);
-  padding: 10px 10px 10px 10px;
+  padding: 10px;
 }
 
 textarea {
@@ -152,9 +157,14 @@ textarea {
   width: 100%;
   font-size: 16px;
   padding: 5px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-size: 20px;
+  cursor: pointer;
 }
 
-select:focus {
+#algorithm-select:focus {
   outline: none;
 }
 
@@ -173,16 +183,26 @@ select:focus {
 #substitution-input,
 #caesar-shift-input {
   height: 25px;
-  padding: 3px;
-  font-size: 15px;
+  padding: 5px;
+  font-size: 16px;
   width: 100%;
+  height: 30px;
   max-width: 100%;
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
-label,
-#substitution-config p {
-  font-size: 15px;
-  color: rgb(39, 39, 39);
+label {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 16px;
+  max-width: 100%;
+  color: rgb(94, 94, 94);
+}
+
+#substitution-input::placeholder {
+  color: #969393;
 }
 
 .submit-container {
@@ -204,6 +224,8 @@ label,
   color: rgb(36, 67, 150);
   background-color: rgb(176, 215, 252);
   border: 1px solid rgb(176, 215, 252);
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.14);
+  transition: background-color 0.3s;
 }
 
 .submit-button:hover {
@@ -244,6 +266,7 @@ footer a:visited {
 .dark-mode {
   background-color: rgb(70, 70, 70);
   color: white;
+  transition: background-color 0.3s;
 }
 
 .dark-mode header {
@@ -324,47 +347,38 @@ footer a:visited {
 
 /* RESPONSIVE */
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 700px) {
   #encoder-container,
   #decoder-container {
-    display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
+  }
+
+  .tabs button {
+    width: 50%;
   }
 
   .io-containers {
-    width: 96%;
+    width: 92%;
   }
 
   .io-body {
-    height: 160px;
+    height: 180px;
   }
 
   #vigenere-keyword-input,
   #substitution-input,
   #caesar-shift-input {
     height: 30px;
-    padding: 3px;
-    font-size: 15px;
   }
 
   #main-container {
     margin: 5px;
     font-family: Arial, Helvetica, sans-serif;
-    flex: 1;
     width: 98%;
   }
 
   .submit-button {
-    width: 80%;
+    width: 91.5%;
     height: 60px;
-    margin: 10px;
-    font-size: 18px;
-    border-radius: 5px;
-    color: rgb(36, 67, 150);
-    background-color: rgb(176, 215, 252);
-    border: 1px solid rgb(176, 215, 252);
   }
 }

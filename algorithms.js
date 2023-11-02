@@ -1,4 +1,4 @@
-function caesarCipherAlgorithm(text, shiftNum) {
+function caesarCipherEncoder(text, shiftNum) {
   shiftNum = shiftNum % 26;
   let finalHash;
 
@@ -26,7 +26,7 @@ function caesarCipherAlgorithm(text, shiftNum) {
   return finalHash;
 }
 
-function vigenereCipherAlgorithm(text, keyword) {
+function vigenereCipherEncoder(text, keyword) {
   keyword = keyword.replace(/[^A-Za-z]/g, "").toUpperCase();
   let finalHash;
 
@@ -61,11 +61,11 @@ function vigenereCipherAlgorithm(text, keyword) {
   return finalHash;
 }
 
-function ROT13Cipher(text) {
-  return caesarCipherAlgorithm(text, 13);
+function ROT13CipherEncoder(text) {
+  return caesarCipherEncoder(text, 13);
 }
 
-function atbashCipher(text) {
+function atbashCipherEncoder(text) {
   let encryptedText = "";
   let alphabet = [
     "a",
@@ -113,7 +113,7 @@ function atbashCipher(text) {
   return finalHash;
 }
 
-function simpleSubstitutionCipher(text, table) {
+function substitutionCipherEncoder(text, table) {
   let alphabet = "abcdefghijklmnopqrstuvwxyz";
   let encryptedText = "";
   let finalHash;
@@ -136,9 +136,9 @@ function simpleSubstitutionCipher(text, table) {
   }
 }
 
-function ccDecoder(cipherText, shift) {
+function caesarCipherDecoder(encryptedText, shift) {
   const alphabet = "abcdefghijklmnopqrstuvwxyz";
-  const cipherArray = cipherText.toLowerCase().split("");
+  const cipherArray = encryptedText.toLowerCase().split("");
   const decryptedArray = [];
 
   for (let i = 0; i < cipherArray.length; i++) {
@@ -147,7 +147,7 @@ function ccDecoder(cipherText, shift) {
       const index = (alphabet.indexOf(char) - shift + 26) % 26;
       const decryptedChar = alphabet[index];
       decryptedArray.push(
-        cipherText[i] === cipherText[i].toUpperCase()
+        encryptedText[i] === encryptedText[i].toUpperCase()
           ? decryptedChar.toUpperCase()
           : decryptedChar
       );
@@ -159,7 +159,7 @@ function ccDecoder(cipherText, shift) {
   return decryptedArray.join("");
 }
 
-function vcDecoder(encryptedText, keyword) {
+function vigenereCipherDecoder(encryptedText, keyword) {
   let decryptedText = "";
   let keyIndex = 0;
 
@@ -191,18 +191,18 @@ function vcDecoder(encryptedText, keyword) {
   return decryptedText;
 }
 
-function acDecoder(cipherText) {
+function atbashCipherDecoder(encryptedText) {
   let decryptedText = "";
   let alphabet = "abcdefghijklmnopqrstuvwxyz";
   let reverseAlphabet = "zyxwvutsrqponmlkjihgfedcba";
 
-  for (let i = 0; i < cipherText.length; i++) {
-    let char = cipherText[i].toLowerCase();
+  for (let i = 0; i < encryptedText.length; i++) {
+    let char = encryptedText[i].toLowerCase();
     if (alphabet.includes(char)) {
       let index = alphabet.indexOf(char);
       let reversedChar = reverseAlphabet[index];
       decryptedText +=
-        cipherText[i] === cipherText[i].toUpperCase()
+        encryptedText[i] === encryptedText[i].toUpperCase()
           ? reversedChar.toUpperCase()
           : reversedChar;
     } else {
@@ -213,14 +213,14 @@ function acDecoder(cipherText) {
   return decryptedText;
 }
 
-function scDecoder(encryptedText, substitutionTable) {
+function substitutionCipherDecoder(encryptedText, table) {
   let alphabet = "abcdefghijklmnopqrstuvwxyz";
   let decryptedText = "";
 
   for (let i = 0; i < encryptedText.length; i++) {
     let char = encryptedText[i].toLowerCase();
     if (alphabet.includes(char)) {
-      let index = substitutionTable.indexOf(char);
+      let index = table.indexOf(char);
       decryptedText += alphabet[index];
     } else {
       decryptedText += char;
@@ -255,15 +255,14 @@ function decoder(hash) {
 
   switch (algorithmCode) {
     case "cc":
-      return ccDecoder(rawCipher, algorithmArg);
+      return caesarCipherDecoder(rawCipher, algorithmArg);
     case "vc":
-      return vcDecoder(rawCipher, algorithmArg);
+      return vigenereCipherDecoder(rawCipher, algorithmArg);
     case "ac":
-      return acDecoder(rawCipher);
+      return atbashCipherDecoder(rawCipher);
     case "sc":
-      return scDecoder(rawCipher, algorithmArg);
+      return substitutionCipherDecoder(rawCipher, algorithmArg);
     default:
-      alert("something went wnrong, report this to the developers");
-      break;
+      return "Unknown";
   }
 }
