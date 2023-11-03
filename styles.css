@@ -136,6 +136,52 @@ body {
   background-color: rgba(192, 206, 219, 0.2);
 }
 
+.clipboard-btn {
+  height: 31px;
+
+  background-color: rgb(176, 215, 252);
+  border: none;
+}
+
+.tooltip {
+  position: relative;
+  display: inline-block;
+  height: 31px;
+}
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 130px;
+  background-color: #555;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px;
+  position: absolute;
+  z-index: 1;
+  bottom: 150%;
+  left: 83%;
+  margin-left: -75px;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.tooltip .tooltiptext::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #555 transparent transparent transparent;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+  opacity: 1;
+}
+
 .io-body {
   height: 180px;
   background-color: rgb(255, 255, 255);
@@ -297,6 +343,19 @@ footer a:visited {
 .dark-mode .io-header {
   background-color: rgb(82, 119, 184);
   color: rgb(243, 243, 243);
+}
+
+.dark-mode .clipboard-btn {
+  background-color: rgb(82, 119, 184);
+}
+
+.dark-mode .tooltip .tooltiptext {
+  background-color: #fff;
+  color: #555;
+}
+
+.dark-mode .tooltip .tooltiptext::after {
+  border-color: #fff transparent transparent transparent;
 }
 
 .dark-mode .io-body,

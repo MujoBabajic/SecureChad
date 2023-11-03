@@ -84,13 +84,24 @@
         <div id="encoder-output-container" class="io-containers">
           <div class="io-header">
             Output
-            <img
-              src="pictures/clipboard_icon.png"
-              alt="clipboard-icon"
-              class="clipboard"
-              onclick="copyToClipboard(
-                'encoder')"
-            />
+            <div class="tooltip">
+              <button
+                class="clipboard-btn"
+                onclick="copyToClipboard('encoder')"
+                onmouseout="hoverOff()"
+              >
+                <span class="tooltiptext" id="myTooltip"
+                  >Copy to clipboard</span
+                >
+                <img
+                  src="pictures/clipboard_icon.png"
+                  alt="clipboard-icon"
+                  class="clipboard"
+                  onclick="copyToClipboard('encoder')"
+                  onmouseout="hoverOff()"
+                />
+              </button>
+            </div>
           </div>
 
           <div class="io-body">
@@ -119,15 +130,26 @@
           </div>
         </div>
 
-        <div id="encoder-output-container" class="io-containers">
-          <div class="tooltip">
-            <div class="io-header">
-              Output<img
-                src="pictures/clipboard_icon.png"
-                alt="clipboard-icon"
-                class="clipboard"
+        <div id="decoder-output-container" class="io-containers">
+          <div class="io-header">
+            Output
+            <div class="tooltip">
+              <button
+                class="clipboard-btn"
                 onclick="copyToClipboard('decoder')"
-              />
+                onmouseout="hoverOff()"
+              >
+                <span class="tooltiptext" id="myTooltip2"
+                  >Copy to clipboard</span
+                >
+                <img
+                  src="pictures/clipboard_icon.png"
+                  alt="clipboard-icon"
+                  class="clipboard"
+                  onclick="copyToClipboard('decoder')"
+                  onmouseout="hoverOff()"
+                />
+              </button>
             </div>
           </div>
           <div class="io-body">
