@@ -121,17 +121,27 @@ decodeButton.addEventListener("click", () => {
 
 //COPY TO CLIPBOARD BUTTON ACTIONS
 function copyToClipboard(button) {
+  let copyText;
+  let tooltip;
+
   if (button == "encoder") {
-    encoderOutput.select();
-    encoderOutput.setSelectionRange(0, 99999);
-
-    navigator.clipboard.writeText(encoderOutput.value);
+    copyText = document.getElementById("encoder-text-output");
+    tooltip = document.getElementById("myTooltip");
   } else if (button == "decoder") {
-    decoderOutput.select();
-    decoderOutput.setSelectionRange(0, 99999);
-
-    navigator.clipboard.writeText(decoderOutput.value);
+    copyText = document.getElementById("decoder-text-output");
+    tooltip = document.getElementById("myTooltip2");
   }
 
-  alert("Text copied");
+  copyText.select();
+  copyText.setSelectionRange(0, 99999);
+  navigator.clipboard.writeText(copyText.value);
+
+  tooltip.innerHTML = "Copied";
+}
+
+function hoverOff() {
+  let tooltip = document.getElementById("myTooltip");
+  let tooltip2 = document.getElementById("myTooltip2");
+  tooltip.innerHTML = "Copy to clipboard";
+  tooltip2.innerHTML = "Copy to clipboard";
 }
