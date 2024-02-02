@@ -6,6 +6,7 @@ This is one of the starting projects in my BILD-IT bootcamp that I've done with 
     1. Encoding/Decoding
 
      Functionality to encode and decode the following ciphers:
+     
      - Atbash Cipher
      - Caesar cipher
      - ROT13
